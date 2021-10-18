@@ -1,0 +1,16 @@
+receivers:
+  jaeger:
+    protocols:   
+      thrift_http:
+
+exporters:
+  jaeger:
+    endpoint: "jaeger:14250"
+  logging: 
+    loglevel: debug
+
+service:
+  pipelines:
+    traces:
+      receivers: [jaeger]
+      exporters: [jaeger, logging]
